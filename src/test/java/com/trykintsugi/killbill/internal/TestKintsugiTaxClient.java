@@ -91,7 +91,7 @@ public class TestKintsugiTaxClient {
     }
 
     @Test(groups = "fast")
-    public void testParseTaxLinesMapsMosaicResponseFields() throws Exception {
+    public void testParseTaxLinesMapsLineExternalIdResponseFields() throws Exception {
         final String json = "{\"documents\":[{\"line_items\":["
                 + "{\"line_external_id\":\"line-1\",\"tax_amount\":\"8.25\","
                 + "\"rate_percentage\":\"8.250000000\",\"taxable_amount\":\"100.00\"}"

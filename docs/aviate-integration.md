@@ -1,6 +1,6 @@
 # Aviate integration (0.1.0)
 
-Kill Bill feedback on this plugin asks for enterprise parity with Aviate deployment patterns. Shipped in **0.1.0**.
+Kill Bill feedback on [PR #1](https://github.com/killbill/killbill-kintsugi-plugin/pull/1) asks for enterprise parity with Aviate deployment patterns. Shipped in **0.1.0**.
 
 ## Deployment paths (Kill Bill team guidance)
 
@@ -40,7 +40,7 @@ Documented in `InvoicePluginPropertyNames` for coordination with the Aviate plug
 ## Planned follow-ups
 
 * **Aviate Catalog tax codes** — resolve plan → product → Aviate tax code from tenant config or API.
-* **Repairs and return documents** — `ITEM_ADJ` / `REPAIR_ADJ` as return lines; stable document IDs.
+* ~~**Repairs and return documents** — `ITEM_ADJ` / `REPAIR_ADJ` as return lines; stable document IDs.~~ Shipped MVP: return estimate with `{invoiceId}:adj-return`, negative TAX linked to adj item; lenient skip when linked item missing. Follow-ups: TaxDate from original invoice, strict mode, CREDIT_ADJ policy.
 
 ## References
 
