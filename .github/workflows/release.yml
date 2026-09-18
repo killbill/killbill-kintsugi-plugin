@@ -22,11 +22,11 @@ jobs:
     steps:
       - name: Checkout code
         if: github.event.inputs.perform_version == ''
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
       - name: Checkout full repository
         # Required when performing an existing release.
         if: github.event.inputs.perform_version != ''
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
         with:
           fetch-depth: '0'
       - name: Setup git user
