@@ -60,7 +60,7 @@ jobs:
           # Will be pushed as part of the release process, only if the release is successful
           git commit -m "pom.xml: update killbill-oss-parent to ${{ github.event.inputs.parent_version }}"
       - name: Configure settings.xml for release
-        uses: actions/setup-java@v6
+        uses: actions/setup-java@v1
         with:
           java-version: 11
           distribution: temurin
