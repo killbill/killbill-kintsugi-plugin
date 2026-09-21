@@ -81,8 +81,13 @@ public final class KintsugiTaxClient {
                 httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
         if (response.statusCode() < 200 || response.statusCode() >= 300) {
+            final String body = response.body();
+            final String snippet = body == null
+                    ? ""
+                    : body.substring(0, Math.min(body.length(), 500));
             throw new IllegalStateException(
-                    "Kintsugi tax API returned HTTP " + response.statusCode());
+                    "Kintsugi tax API returned HTTP " + response.statusCode()
+                            + (snippet.isEmpty() ? "" : ": " + snippet));
         }
 
         return parseTaxLines(response.body());
@@ -106,8 +111,7 @@ public final class KintsugiTaxClient {
                 continue;
             }
             for (final JsonNode line : lineItems) {
-                // Mosaic response uses line_external_id / rate_percentage; accept
-                // legacy external_id / rate for older fixtures and wiremocks.
+                // Prefer line_external_id / rate_percentage; fall back to external_id / rate.
                 final String externalId = firstText(line, "line_external_id", "external_id");
                 final BigDecimal taxAmount = new BigDecimal(line.path("tax_amount").asText("0"));
                 final String rateText = firstText(line, "rate_percentage", "rate");
