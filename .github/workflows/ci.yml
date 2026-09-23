@@ -8,7 +8,7 @@ on:
 
 jobs:
   ci:
-    uses: killbill/gh-actions-shared/.github/workflows/ci.yml@main
+    uses: killbill/gh-actions-shared/.github/workflows/ci.yml@maint-for-0-24-x
     with:
       test-profile-matrix: '[ "travis" ]'
       maven_args: >-
@@ -19,6 +19,3 @@ jobs:
         -Dcheck.skip-duplicate-finder=true
         -Dcheck.skip-enforcer=true
         -Dcheck.skip-rat=true
-    secrets:
-      CLOUDSMITH_CENTRAL_PASSWORD: ${{ secrets.CLOUDSMITH_CENTRAL_PASSWORD }}
-      CLOUDSMITH_KILLBILL_MAVEN_REPO_PASSWORD: ${{ secrets.CLOUDSMITH_KILLBILL_MAVEN_REPO_PASSWORD }}
